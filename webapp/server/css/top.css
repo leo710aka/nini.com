@@ -1,0 +1,40 @@
+body{
+    width: 100%;
+    height: 100%;
+}
+
+*{           /*清除所有标签的初始内外边距*/
+    padding:0;
+    margin:0;
+}
+.nav{
+    background-color: deepskyblue;  /*颜色*/
+    height:105px;/*高度140像素*/
+    width: 100%;/*宽度为<body>的100%，也就是相同宽度*/
+    line-height:80px;/*行高，看文字位置你就明白了*/
+    position: absolute;/*绝对定位*/
+    top: 0px;/*距离顶部0像素*/
+    left: 0;/*距离左侧边界0px*/
+}
+.nav li{
+    float:left;/*浮动*/
+    width:75px;/*设置一个<li>宽度75px*/
+    text-align:center;/*文本居中*/
+}
+.ul_top{
+    list-style: none;/*去除列表格式，消除小黑点*/
+    position: absolute;
+    top: 70px;/*距离顶部70px*/
+    left: 60px;/*距离左侧70px*/
+}
+.nav a{
+    display:block;/*块状显示，一块块的整齐*/
+    color:white;/*内容颜色白色*/
+    text-decoration: none;/*去掉下划线*/
+    width: 80px;/*每个宽度80px*/
+    line-height: 30px;/*行高30px*/
+}
+.nav a:hover{
+    color:white;/*鼠标置于上方显示白色*/
+    background:green;/*背景色为绿色*/
+}
