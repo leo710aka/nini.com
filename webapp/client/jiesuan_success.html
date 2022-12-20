@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>结算成功！</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+
+<div><h1>结算成功</h1></div>
+<div><h2>在验证邮件中，点击确认链接后发货</h2></div>
+<div><a id ="p1">5</a>后回到主页<a href="/nini/homePage">返回</a></div>
+<script type="text/javascript">
+
+  //获取显示秒数的元素，通过定时器来更改秒数。
+  var num = 5;
+  function downTime(){
+    document.getElementById('p1').innerHTML=num;
+    if(num>0){
+      num--;
+    }else{
+      window.location = "/nini/homePage";
+    }
+    setTimeout("downTime()",1000);
+  }
+  //通过window的location和history对象来控制网页的跳转。
+  downTime();
+</script>
+</body>
+</html>
