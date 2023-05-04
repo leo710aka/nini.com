@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>商品管理</title>
+    <title>销售人员管理</title>
 <%--    <link href="./css/top.css" type="text/css" rel="stylesheet" />--%>
     <link rel="stylesheet" href="./server/css/top.css">
 
@@ -17,6 +17,7 @@
     <ul class="ul_top">
         <c:if test="${saleid==1}">
             <li><a href="/nini/SaleController">销售人员</a></li>
+<%--            <button class="layui-btn layui-btn-xs layui-btn-primary " style="margin-left: 15px;width: 90px;" data-type="reload" id="model" onclick="model()">数据模型生成</button>--%>
         </c:if>
         <li><a href="/nini/selectAllServlet">商品管理</a></li>
         <li><a href="/nini/shoppingRecord">销售记录</a></li>
@@ -26,39 +27,26 @@
 </div>
 <br><br><br><br><br><hr>
 
-<h2>商品管理</h2>
+<h2>销售员管理</h2>
 <br>
-<input type="button" value="新增商品" id="add" style="width:100px; height:30px;" >
+<input type="button" value="新增人员" id="add" style="width:100px; height:30px;" >
 <br>
 <hr>
 <table border="1" cellspacing="0" width="80%">
     <tr>
-        <th>商品ID</th>
-        <th>品牌名称</th>
-        <th>商品名称</th>
-        <th>价格</th>
-        <th>商品介绍</th>
-        <th>状态</th>
+        <th>销售人员ID</th>
+        <th>账号</th>
+        <th>密码</th>
         <th>操作</th>
     </tr>
-    <c:forEach items="${brands}" var="brand" varStatus="status">
+    <c:forEach items="${sales}" var="sale" varStatus="status">
         <tr align="center">
-            <td>${brand.id}</td>
-<%--            <td>${status.count}</td>--%>
-            <td>${brand.brandName}</td>
-            <td>${brand.goodsName}</td>
-            <td>${brand.price}</td>
-            <td>${brand.description}</td>
-            <c:if test="${brand.status == 1}">
-                <td>启用</td>
-            </c:if>
-            <c:if test="${brand.status != 1}">
-                <td>禁用</td>
-            </c:if>
+            <td>${sale.id}</td>
+            <td>${sale.username}</td>
+            <td>${sale.password}</td>
             <td>
-                <a href="/nini/selectBrandByIdServlet?id=${brand.id}">修改</a>
-<%--                <a href="/nini/deleteBrandByIdServlet?id=${brand.id}">删除</a>--%>
-                <a>删除</a>
+                <a href="/nini/selectSaleById?id=${sale.id}">修改</a>
+                <a >删除</a>
             </td>
         </tr>
     </c:forEach>
@@ -66,7 +54,7 @@
 
 <script>
     document.getElementById("add").onclick = function (){
-        location.href = "/nini/server/addBrand.jsp";
+        location.href = "/nini/server/addSale.jsp";
     }
 </script>
 

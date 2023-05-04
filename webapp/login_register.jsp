@@ -19,17 +19,18 @@
 </head>
 <body>
 <div id="errorMsg">${msg}</div>
-    
+
 <div class="container" id="container">
+
     <div class="form-container sign-up-container">
         <form action="/nini/registerServlet" method="post" id="form1">
             <h1>用户注册</h1>
-            <div class="social-container">
+            <!-- <div class="social-container">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"> <i class="fab fa-google-plus-g"></i> </a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-
-            </div>
+            </div> -->
+            <br>
             <span>使用用户名和密码注册</span>
             <input type="text"     id="username1" name="username1" placeholder="用户名" />
             <input type="password" id="password1" name="password1" placeholder="密码" />
@@ -41,15 +42,18 @@
     <div class="form-container sign-in-container" id="loginDiv">
         <form action="/nini/loginServlet" method="post" id="form">
             <h1>用户登录</h1>
-            <div class="social-container">
+            <!-- <div class="social-container">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-google-plus-g"></i> </a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
+            </div> -->
+            <br>
             <input type="text"     id="username" name="username" placeholder="用户名" />
             <input type="password" id="password" name="password" placeholder="密码" />
-            <a href="#">忘记密码？</a>
+<%--            <a href="#">忘记密码？</a>--%>
             <input type="submit" class="button" value="登录">
+            <a href="server/login.html" style="color: #3c97bf">商城后台</a>
+
         </form>
     </div>
 
@@ -68,11 +72,11 @@
         </div>
     </div>
 </div>
-<footer>
+<!-- <footer>
     <p>
         Copyright © ___ All Rights Reserved.
     </p>
-</footer>
+</footer> -->
 
 <script src="js/login_register.js"></script>
 </body>

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>销售记录</title>
+    <title>浏览记录</title>
     <link rel="stylesheet" href="./server/css/top.css">
 
 </head>
@@ -25,26 +25,29 @@
 </div>
 <br><br><br><br><br><hr>
 
-<h2>销售记录</h2>
+<h2>浏览记录</h2>
 <br>
 <hr>
 <table border="1" cellspacing="0" width="80%">
     <tr>
+        <th>用户ID</th>
+        <th>用户名称</th>
         <th>商品ID</th>
         <th>品牌名称</th>
         <th>商品名称</th>
-        <th>价格</th>
-        <th>售出数量</th>
-
+        <th>开始时间</th>
+        <th>结束时间</th>
     </tr>
 
-    <c:forEach items="${shoppingrecords}" var="shoppingrecord" varStatus="status">
+    <c:forEach items="${userviewinfos}" var="userviewinfo" varStatus="status">
         <tr align="center">
-            <td>${shoppingrecord.id}</td>
-            <td>${shoppingrecord.brandName}</td>
-            <td>${shoppingrecord.goodsName}</td>
-            <td>${shoppingrecord.price}</td>
-            <td>${shoppingrecord.count}</td>
+            <td>${userviewinfo.userid}</td>
+            <td>${userviewinfo.username}</td>
+            <td>${userviewinfo.brandid}</td>
+            <td>${userviewinfo.brandName}</td>
+            <td>${userviewinfo.goodsName}</td>
+            <td>${userviewinfo.viewbegin}</td>
+            <td>${userviewinfo.viewend}</td>
         </tr>
     </c:forEach>
 
