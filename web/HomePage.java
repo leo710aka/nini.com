@@ -1,6 +1,7 @@
 package com.itheima.web;
 
 import com.itheima.pojo.Brand;
+import com.itheima.pojo.Img;
 import com.itheima.pojo.User;
 import com.itheima.service.BrandService;
 import com.itheima.service.UserService;
@@ -27,12 +28,14 @@ public class HomePage extends HttpServlet {
 
         String username = (String) session.getAttribute("username");
         List<Brand> brands = (List<Brand>) session.getAttribute("brands");
+        List<Img> imgs = (List<Img>) session.getAttribute("imgs");
+
 
         request.setAttribute("username",username);
         request.setAttribute("brands",brands);
+        request.setAttribute("imgs",imgs);
 
         request.getRequestDispatcher("/client/home.jsp").forward(request,response);
-
 
     }
 

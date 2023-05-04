@@ -2,6 +2,7 @@ package com.itheima.web;
 
 import com.itheima.pojo.Brand;
 import com.itheima.pojo.Img;
+import com.itheima.pojo.UserViewInfo;
 import com.itheima.service.BrandService;
 import com.itheima.service.ImgService;
 import com.itheima.service.impl.BrandServiceImpl;
@@ -11,7 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @WebServlet("/selectByIdServlet")
@@ -22,13 +25,14 @@ public class SelectByIdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         String id = request.getParameter("id");
-
         Brand brand = service.selectById(Integer.parseInt(id));
         request.setAttribute("brand",brand);
         Img img = service1.selectById(Integer.parseInt(id));
         request.setAttribute("imgUrl",img.getImgUrl());
+
+        HttpSession session = request.getSession();
+        session.setAttribute("viewbegin", LocalDateTime.now());
 
         request.getRequestDispatcher("/client/goods_detail.jsp").forward(request,response);
 

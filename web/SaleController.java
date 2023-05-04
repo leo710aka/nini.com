@@ -1,9 +1,9 @@
 package com.itheima.web;
 
 import com.itheima.pojo.Brand;
-import com.itheima.pojo.Shoppingrecord;
+import com.itheima.pojo.Sale;
 import com.itheima.service.BrandService;
-import com.itheima.service.ShoppingrecordService;
+import com.itheima.service.SaleService;
 import com.itheima.service.impl.BrandServiceImpl;
 
 import javax.servlet.ServletException;
@@ -14,25 +14,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/shoppingRecord")
-public class ShoppingRecord extends HttpServlet {
+@WebServlet("/SaleController")
+public class SaleController extends HttpServlet {
 
-    private ShoppingrecordService service = new ShoppingrecordService();
+    private SaleService saleService = new SaleService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Integer saleid = (Integer) request.getSession().getAttribute("saleid");
         request.setAttribute("saleid",saleid);
-        //管理员 全部商品; 销售 部分商品
-        if(saleid==1){
-            List<Shoppingrecord> shoppingrecords = service.selectAll();
-            request.setAttribute("shoppingrecords",shoppingrecords);
-        }else{
-            List<Shoppingrecord> shoppingrecords = service.selectBySaleId(saleid);
-            request.setAttribute("shoppingrecords",shoppingrecords);
-        }
-        request.getRequestDispatcher("/server/shoppingrecord.jsp").forward(request,response);
+
+        List<Sale> sales = saleService.selectAll();
+        request.setAttribute("sales",sales);
+
+        request.getRequestDispatcher("/server/sale.jsp").forward(request,response);
     }
 
     @Override

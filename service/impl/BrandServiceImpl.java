@@ -4,9 +4,11 @@ import com.itheima.mapper.BrandMapper;
 import com.itheima.pojo.Brand;
 import com.itheima.service.BrandService;
 import com.itheima.util.SqlSessionFactoryUtils;
+import org.apache.ibatis.executor.BaseExecutor;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BrandServiceImpl implements BrandService {
@@ -69,17 +71,28 @@ public class BrandServiceImpl implements BrandService {
     }
 
     public void deleteById(int id){
+        SqlSession sqlSession = factory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        mapper.deleteById(id);
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Override
+    public List<Brand> selectBySaleId(int saleid) {
 
         SqlSession sqlSession = factory.openSession();
-
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
-
-        mapper.deleteById(id);
-
-        sqlSession.commit();
-
+        List<Brand> brands = mapper.selectAll();
+        List<Brand> brands1=new ArrayList<>();
+        for (int i =0; i<brands.size(); i++) {
+            if (brands.get(i).getSaleid() == saleid){
+                brands1.add(brands.get(i));
+            }
+        }
         sqlSession.close();
 
+        return brands1;
     }
 
 }

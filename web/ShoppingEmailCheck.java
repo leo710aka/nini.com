@@ -8,8 +8,6 @@ import java.io.IOException;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.util.Date;
 import java.util.Properties;
 import javax.mail.Transport;

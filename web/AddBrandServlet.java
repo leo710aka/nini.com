@@ -24,6 +24,7 @@ public class AddBrandServlet extends HttpServlet {
         String price = request.getParameter("price");
         String description = request.getParameter("description");
         String status = request.getParameter("status");
+        Integer saleid =(Integer) request.getSession().getAttribute("saleid");
 
         Brand brand = new Brand();
         brand.setBrandName(brandName);
@@ -31,6 +32,7 @@ public class AddBrandServlet extends HttpServlet {
         brand.setPrice(Integer.parseInt(price));
         brand.setDescription(description);
         brand.setStatus(Integer.parseInt(status));
+        brand.setSaleid(saleid);
 
         service.add(brand);
 

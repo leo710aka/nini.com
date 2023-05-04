@@ -24,5 +24,6 @@ public interface BrandService {
 
     void deleteById(int id);
 
+    List<Brand> selectBySaleId(int saleid);
 
     }

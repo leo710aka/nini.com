@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingrecordService {
@@ -45,4 +46,26 @@ public class ShoppingrecordService {
         return shoppingrecords;
 
     }
+
+    public List<Shoppingrecord> selectBySaleId(int saleid) {
+
+        SqlSession sqlSession = factory.openSession();
+        ShoppingrecordMapper mapper = sqlSession.getMapper(ShoppingrecordMapper.class);
+        BrandMapper mapper1 = sqlSession.getMapper(BrandMapper.class);
+
+        List<Shoppingrecord> shoppingrecords = mapper.selectAll();
+        List<Shoppingrecord> shoppingrecords1 = new ArrayList<>();
+
+        for (int i =0; i<shoppingrecords.size(); i++) {
+            //每条销售记录查一下对应销售员
+            int brandid = shoppingrecords.get(i).getId();
+            Brand brand = mapper1.selectById(brandid);
+            if(brand.getSaleid() == saleid){
+                shoppingrecords1.add(shoppingrecords.get(i));
+            }
+        }
+        sqlSession.close();
+        return shoppingrecords1;
+    }
+
 }
