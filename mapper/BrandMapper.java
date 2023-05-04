@@ -19,7 +19,7 @@ public interface BrandMapper {
      * 添加数据
      * @param brand
      */
-    @Insert("insert into tb_brand values(null,#{brandName},#{goodsName},#{price},#{description},#{status})")
+    @Insert("insert into tb_brand values(null,#{brandName},#{goodsName},#{price},#{description},#{status},#{saleid})")
     void add(Brand brand);
 
     @Select("select * from tb_brand where id = #{id}")

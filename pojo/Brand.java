@@ -13,7 +13,7 @@ public class Brand {
     private String description;
     // 状态：0：禁用  1：启用
     private Integer status;
-
+    private Integer saleid;
 
     public Integer getId() {
         return id;
@@ -68,6 +68,14 @@ public class Brand {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getSaleid() {
+        return saleid;
+    }
+
+    public void setSaleid(Integer saleid) {
+        this.saleid = saleid;
     }
 
     @Override
